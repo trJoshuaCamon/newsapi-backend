@@ -1,4 +1,14 @@
 export default async function handler(req, res) {
+  // Set CORS headers to allow the frontend domain to access this endpoint
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins, change * to your frontend URL for stricter control.
+  res.setHeader("Access-Control-Allow-Methods", "GET"); // Allow GET requests
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Allow Content-Type header
+
+  // If the request is a preflight (OPTIONS request), return a 200 response.
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   const { category } = req.query; // Get category from query parameters
 
   const validCategories = [
