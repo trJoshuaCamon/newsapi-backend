@@ -1,9 +1,8 @@
+// api/news/[category].js
 const axios = require("axios");
 
-module.exports = async (req, res) => {
-  const {
-    query: { category },
-  } = req;
+export default async function handler(req, res) {
+  const { category } = req.query; // Get category from query parameters
 
   const validCategories = [
     "topHeadlines",
@@ -20,22 +19,16 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: "Invalid category" });
   }
 
-  const apiKey = process.env.NEWS_API_KEY;
-
-  if (!apiKey) {
-    return res.status(500).json({ error: "Missing API key" });
-  }
-
-  const baseUrl =
-    category === "topHeadlines"
-      ? `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`
-      : `https://newsapi.org/v2/top-headlines?category=${category}&country=us&pageSize=100&apiKey=${apiKey}`;
-
   try {
+    const baseUrl =
+      category === "topHeadlines"
+        ? `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${process.env.NEWS_API_KEY}`
+        : `https://newsapi.org/v2/top-headlines?category=<span class="math-inline">\{category\}&country\=us&pageSize\=100&apiKey\=</span>{process.env.NEWS_API_KEY}`;
+
     const response = await axios.get(baseUrl);
-    return res.status(200).json(response.data.articles);
+    res.json(response.data.articles);
   } catch (error) {
     console.error("Error fetching category:", error.message);
-    return res.status(500).json({ error: "Failed to fetch news" });
+    res.status(500).json({ error: "Failed to fetch news" });
   }
-};
+}
