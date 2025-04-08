@@ -6,12 +6,14 @@
       "use": "@vercel/node"
     }
   ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
+  "rewrites": [
+    {
+      "source": "/api/news/:category",
+      "destination": "/api/news/[category].js"
+    },
+    {
+      "source": "/api/article",
+      "destination": "/api/article.js"
     }
-  },
-  "env": {
-    "NEWS_API_KEY": "1ace9d11cf4b4586a3a0e2e5a7402934"
-  }
+  ]
 }
