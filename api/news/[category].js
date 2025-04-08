@@ -20,13 +20,18 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: "Invalid category" });
   }
 
-  try {
-    const apiKey = process.env.NEWS_API_KEY;
-    const baseUrl =
-      category === "topHeadlines"
-        ? `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`
-        : `https://newsapi.org/v2/top-headlines?category=${category}&country=us&pageSize=100&apiKey=${apiKey}`;
+  const apiKey = process.env.NEWS_API_KEY;
 
+  if (!apiKey) {
+    return res.status(500).json({ error: "Missing API key" });
+  }
+
+  const baseUrl =
+    category === "topHeadlines"
+      ? `https://newsapi.org/v2/top-headlines?country=us&pageSize=100&apiKey=${apiKey}`
+      : `https://newsapi.org/v2/top-headlines?category=${category}&country=us&pageSize=100&apiKey=${apiKey}`;
+
+  try {
     const response = await axios.get(baseUrl);
     return res.status(200).json(response.data.articles);
   } catch (error) {
