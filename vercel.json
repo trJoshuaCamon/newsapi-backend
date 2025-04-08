@@ -14,6 +14,10 @@
     {
       "source": "/api/article",
       "destination": "/api/article.js"
+    },
+    {
+      "source": "/api/searchNews",
+      "destination": "/api/searchNews.js"
     }
   ]
 }
