@@ -1,8 +1,9 @@
 export default async function handler(req, res) {
   // Set CORS headers to allow the frontend domain to access this endpoint
   res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins, change * to your frontend URL for stricter control.
-  res.setHeader("Access-Control-Allow-Methods", "GET"); // Allow GET requests
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Allow Content-Type header
+  res.setHeader("Access-Control-Allow-Methods", "GET"); // Allow GET requests (change if you support other methods)
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization"); // Allow Content-Type and Authorization headers (if you use Authorization header)
+  res.setHeader("Access-Control-Allow-Credentials", "true"); // Allow credentials (cookies) if needed (only if your frontend needs cookies)
 
   // If the request is a preflight (OPTIONS request), return a 200 response.
   if (req.method === "OPTIONS") {
