@@ -18,6 +18,14 @@
     {
       "source": "/api/searchNews",
       "destination": "/api/searchNews.js"
+    },
+    {
+      "source": "/api/stocks/profile/:symbol",
+      "destination": "/api/stocks/profile/[symbol].js"
+    },  
+    {
+      "source": "/api/stocks/quote/:symbol",
+      "destination": "/api/stocks/quote/[symbol].js"
     }
   ]
 }
