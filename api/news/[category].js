@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     "entertainment",
     "general",
     "health",
-    "science",
+    // "science",
     "sports",
     "technology",
   ];
