@@ -5,7 +5,7 @@
 ### Project Description
 This project provides a full-stack application that allows users to get real-time news, weather updates, stock market data, and zodiac horoscopes. The frontend is built using React, with the backend serving API data, including articles, weather, stock quotes, and more.
 
-### Features
+### Added Features (04/28/2025)
 - **Market Overview (Stocks Widget)**: Displays live stock data and includes caching for better performance.
 - **Improved UI**: Redesigned user interface for a more modern and streamlined experience.
 - **Continuous Scrolling with Lazy Loading**: News articles and other data are fetched progressively as the user scrolls down, improving performance and user experience.
@@ -42,7 +42,7 @@ This project provides a full-stack application that allows users to get real-tim
    npm run dev
    ```
 
-4. Open your browser and go to `http://localhost:3000` to view the app.
+4. Open your browser and go to `http://localhost:5173` to view the app.
 
 ### Running the app in production mode
 
@@ -86,7 +86,7 @@ This project provides a full-stack application that allows users to get real-tim
    npm start
    ```
 
-4. The backend server will be running at `http://localhost:4000`.
+4. The backend server will be running at `http://localhost:3000`.
 
 ---
 
@@ -100,5 +100,24 @@ This project provides a full-stack application that allows users to get real-tim
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+### Environment Variables
+
+#### Frontend (.env)
+
+```
+VITE_BACKEND_BASE_URL=http://localhost:3000
+```
+
+#### Backend (.env)
+
+```
+NEWS_API_KEY=your_news_api_key_here
+WEATHER_API_KEY=your_weather_api_key_here
+FINNHUB_BASE_URL=your_finnhub_base_url_here
+FINNHUB_API_KEY=your_finnhub_api_key_here
+```
 
 ---
