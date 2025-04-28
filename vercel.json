@@ -30,6 +30,10 @@
      {
       "source": "/api/weather/weather",
       "destination": "/api/weather/weather.js"
+    },
+     {
+      "source": "/api/zodiac/horoscope",
+      "destination": "/api/zodiac/horoscope.js"
     }
   ]
 }
