@@ -26,6 +26,10 @@
     {
       "source": "/api/stocks/quote/:symbol",
       "destination": "/api/stocks/quote/[symbol].js"
+    },
+     {
+      "source": "/api/weather/weather",
+      "destination": "/api/weather/weather.js"
     }
   ]
 }
